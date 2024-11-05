@@ -1,0 +1,54 @@
+
+package duanoop;
+
+import java.util.Scanner;
+
+public class Nguoi {
+    protected String maSo;
+    protected String hoTen;
+    protected int tuoi;
+    Scanner sc=new Scanner(System.in);
+    public Nguoi(){
+    }
+    public Nguoi(String maSo,String hoTen,int tuoi){
+        this.maSo=maSo;
+        this.hoTen=hoTen;
+        this.tuoi=tuoi;
+    }
+    public String getMaSo(){
+        return maSo;
+    }
+    public String getHoten(){
+        return hoTen;
+    }
+    public int getTuoi(){
+        return tuoi;
+    }
+    public void setMaSo(String maSo){
+        this.maSo=maSo;
+    }   
+    public void setHoTen(String hoTen){
+        this.hoTen=hoTen;
+    }
+    public void setTuoi(int tuoi) {
+        this.tuoi = tuoi;
+    }
+    public void nhap(){
+        System.out.println("Nhap ma :");
+        setMaSo(sc.nextLine());
+        System.out.println("Nhap ho ten :");
+        setHoTen(sc.nextLine());
+        System.out.println("Nhap tuoi :");
+        setTuoi(sc.nextInt());
+        sc.nextLine();
+    }
+
+    @Override
+    public String toString() {
+        return "ma so :"+maSo +"\nho ten :"+hoTen+"\ntuoi :"+tuoi;
+    }
+    public void xuat(){  
+        System.out.println(toString());
+    } 
+        
+}
