@@ -1,0 +1,4 @@
+package duanoop;
+public interface ILuong {
+    double tinhluong();
+}
