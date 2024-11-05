@@ -1,0 +1,49 @@
+
+package duanoop;
+public class LopHoc {
+    GiaoVien gv=new GiaoVien();
+    DSHocSinh dshs =new DSHocSinh(40);
+    ThoiKhoaBieu tkb=new ThoiKhoaBieu();
+    public GiaoVien getGv() {
+        return gv;
+    }
+
+    public void setGv(GiaoVien gv) {
+        this.gv = gv;
+    }
+
+    public DSHocSinh getDshs() {
+        return dshs;
+    }
+    public void setDshs(DSHocSinh dshs) {
+        this.dshs = dshs;
+    }
+
+    public ThoiKhoaBieu getTkb() {
+        return tkb;
+    }
+    public void setTkb(ThoiKhoaBieu tkb) {
+        this.tkb = tkb;
+    }
+    
+    
+    public void nhapLop(){
+        System.out.println("Nhap giao vien chu nhiem :");
+        gv.nhap();
+        System.out.println("Nhap danh sach hoc sinh :");
+        dshs.nhapDSHS();  
+        System.out.println("Nhap thoi khoa bieu :");
+        tkb.nhapTKB();
+    }
+    public void xuatLop(){
+       System.out.println("------------------------");
+       System.out.println("Giao vien chu nhiem :");
+       gv.xuat();
+       System.out.println("------------------------");
+       System.out.println("Danh sach hoc sinh ");
+       dshs.xuatDSHS();
+       System.out.println("------------------------");
+       System.out.println("Danh sach hoc sinh :");
+       tkb.xuatTKB();
+    }
+}
