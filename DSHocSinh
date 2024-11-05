@@ -1,0 +1,57 @@
+
+package duanoop;
+
+import java.util.Scanner;
+
+public class DSHocSinh {
+    HocSinh dshs[];
+    int slhs;
+    int maxslhs;
+    public DSHocSinh(int maxsl){ 
+        this.maxslhs=maxsl;
+        dshs=new HocSinh[maxsl];
+        slhs=0;
+    }
+
+    public int getSlhs() {
+        return slhs;
+    }    
+    public void nhapDSHS(){ 
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Nhap so luong hoc sinh :");
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++){ 
+            HocSinh hs = new HocSinh();
+            hs.nhap();
+           themHS(hs);
+        }
+    }
+    public void xuatDSHS(){
+        for(int i=0;i<slhs;i++){ 
+            dshs[i].xuat();
+        }
+    }
+    public void themHS(HocSinh hs){ 
+        if(maxslhs<slhs){
+            System.out.println("Khong con cho de them ");
+        } else{
+            dshs[slhs]=hs;
+            slhs++;
+        }           
+    }
+    public void xoaHS(String mahs) {  
+    for (int i = 0; i < slhs; i++) {
+        if (dshs[i].getMaSo().equals(mahs)) {
+            for (int j = i; j < slhs - 1; j++) {
+                dshs[j] = dshs[j + 1];
+            }
+            dshs[slhs - 1] = null; 
+            slhs--;
+            System.out.println("Da xoa hoc sinh voi ma so: " + mahs);
+            return;
+        }
+    }
+    System.out.println("Khong tim thay hoc sinh voi ma so: " + mahs);
+}
+        
+}
