@@ -1,0 +1,49 @@
+
+package duanoop;
+
+import java.util.Scanner;
+
+public class ThoiKhoaBieu {
+    MonHoc dsmh[];
+    int slmh;
+
+    public ThoiKhoaBieu() {
+        dsmh=new MonHoc[7];
+        slmh=0;
+    }
+    public void nhapTKB(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Nhap so luong mon hoc :");
+        int n=sc.nextInt();
+        sc.nextLine();
+        for(int i=0;i<n;i++){
+            MonHoc mh=new MonHoc();
+            mh.nhapMH();
+            themMH(mh);
+        }
+    }
+    public void themMH(MonHoc mh){
+        if(slmh>7){
+            System.out.println("Lop nay da du mon , khong the them :");
+        }else{
+            dsmh[slmh]=mh;
+            slmh++;
+        }
+    }
+    public void xuatTKB(){
+        for(int i=0;i<slmh;i++){
+            dsmh[i].xuatMH();
+        }           
+    }
+    public void xoaMH(String mamh){
+        for(int i=0;i<slmh;i++){
+            if(dsmh[i].getMaMon().equals(mamh)){
+                dsmh[i]=dsmh[i+1];
+            }
+            dsmh[slmh-1]=null;
+            slmh--;
+            System.out.println("da xoa mon hoc voi ma mon "+mamh);
+        }
+        System.out.println("Khong tim thay mon hoc ");
+    }
+}
