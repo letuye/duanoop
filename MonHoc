@@ -1,0 +1,57 @@
+
+package duanoop;
+
+import java.util.Scanner;
+public class MonHoc {
+    private String maMon;
+    private String tenMon;
+    private int soTiet;
+
+    public MonHoc() {
+    }
+
+    public MonHoc(String maMon, String tenMon, int soTiet) {
+        this.maMon = maMon;
+        this.tenMon = tenMon;
+        this.soTiet = soTiet;
+    }
+
+    public String getMaMon() {
+        return maMon;
+    }
+
+    public int getSoTiet() {
+        return soTiet;
+    }
+
+    public String getTenMon() {
+        return tenMon;
+    }
+
+    public void setMaMon(String maMon) {
+        this.maMon = maMon;
+    }
+
+    public void setSoTiet(int soTiet) {
+        this.soTiet = soTiet;
+    }
+
+    public void setTenMon(String tenMon) {
+        this.tenMon = tenMon;
+    }
+    
+    public void nhapMH(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Nhap ma mon :");
+        setMaMon(sc.nextLine());
+        System.out.println("Nhap ten mon :");
+        setTenMon(sc.nextLine());
+        System.out.println("Nhap so tiet trong tuan :");
+        setSoTiet(sc.nextInt());
+        sc.nextLine();
+    }     
+    public void xuatMH(){
+        System.out.println("ma mon :"+maMon +"\nten mon :"+tenMon+"\nso tiet :"+soTiet);
+    }
+    
+}
