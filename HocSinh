@@ -1,0 +1,41 @@
+
+package duanoop;
+
+import java.util.Scanner;
+
+public class HocSinh extends Nguoi{
+    private String soDienThoai;
+    static double hocPhi=2500000;
+    public HocSinh(){
+        
+    }
+    public HocSinh(String maSo,String hoTen,int tuoi,String soDienThoai){
+        super(maSo,hoTen,tuoi);
+        this.soDienThoai=soDienThoai;
+    }
+
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+    public double getHocPhi() {
+        return hocPhi;
+    }
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
+    }
+    public void setHocPhi(double hocPhi) {
+        this.hocPhi = hocPhi;
+    }
+    @Override
+    public void nhap(){ 
+        super.nhap();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Nhap so dien thoai ");
+        setSoDienThoai(sc.nextLine());
+    }
+        
+    @Override
+    public String toString() {
+        return super.toString()+"\nso dien thoai :"+soDienThoai+"\nhoc phi :"+hocPhi; 
+    }
+}
