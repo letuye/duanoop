@@ -1,9 +1,13 @@
 
 package duanoop;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Scanner;
 
-public class DSHocSinh {
+public class DSHocSinh implements IFile{
     HocSinh dshs[];
     int slhs;
     int maxslhs;
@@ -20,8 +24,19 @@ public class DSHocSinh {
         Scanner sc=new Scanner(System.in);
         System.out.println("Nhap so luong hoc sinh :");
         int n=sc.nextInt();
+        HocSinh hs;
+        char loai;
         for(int i=0;i<n;i++){ 
-            HocSinh hs = new HocSinh();
+            System.out.println("Nhap loai hoc sinh A(hoNgheo) B(TangCuong) C(Thuong)");
+             loai = sc.next().charAt(0);
+            if(loai == 'A'){
+                hs=new HSHoNgheo();
+            }else
+            if(loai =='B'){
+                hs=new HSBoiDuong();
+            }else{ 
+                hs=new HSThuong();
+            }        
             hs.nhap();
            themHS(hs);
         }
@@ -53,5 +68,90 @@ public class DSHocSinh {
     }
     System.out.println("Khong tim thay hoc sinh voi ma so: " + mahs);
 }
+    @Override
+    public void ghiFile(){ 
+        try{ 
+            FileWriter fw = new FileWriter("hocsinh.txt");
+            BufferedWriter bw = new BufferedWriter(fw);
+            for(HocSinh hs :dshs){ 
+                if (hs == null) continue;
+                if (hs instanceof HSHoNgheo) {
+            HSHoNgheo lhs1 = (HSHoNgheo) hs;
+            bw.write("A\t" + lhs1.toString()); // hoặc định dạng riêng
+        } else if (hs instanceof HSBoiDuong) {
+            HSBoiDuong lhs2 = (HSBoiDuong) hs;
+            bw.write("B\t " + lhs2.toString());
+        } else{
+            HSThuong lhs3 =(HSThuong) hs;
+            bw.write("C\t " + lhs3.toString());
+        }            
+                bw.newLine();
+            }
+            bw.close();
+            fw.close();
+        }catch(Exception e){            
+        }
+    }
+
+    @Override
+    public void docFile() {
+    try (FileReader fr = new FileReader("hocsinh.txt"); 
+         BufferedReader br = new BufferedReader(fr)) {
         
+        String line;
+        slhs = 0; // Reset danh sách hiện có
+        
+        while ((line = br.readLine()) != null) {
+            String[] txt = line.split("\t"); // Không giới hạn số phần tử
+            
+            if (txt.length < 2) {
+                System.out.println("Dòng dữ liệu không hợp lệ: " + line);
+                continue;
+            }
+            
+            HocSinh hs = null;
+            
+            switch (txt[0]) {
+                case "A" -> {
+                    if (txt.length >= 6) {
+                        String ms = txt[1];
+                        String ht = txt[2];
+                        int t = Integer.parseInt(txt[3]);
+                        String sdt = txt[4];
+                        char h = txt[5].charAt(0);
+                        hs = new HSHoNgheo(h, ms, ht, t, sdt);
+                    }
+                }
+                case "B" -> {
+                    if (txt.length >= 6) {
+                        String ms = txt[1];
+                        String ht = txt[2];
+                        int t = Integer.parseInt(txt[3]);
+                        String sdt = txt[4];
+                        int smbd = Integer.parseInt(txt[5]);
+                        hs = new HSBoiDuong(smbd, ms, ht, t, sdt);
+                    }
+                }
+                case "C" -> {
+                    if (txt.length >= 5) {
+                        String ms = txt[1];
+                        String ht = txt[2];
+                        int t = Integer.parseInt(txt[3]);
+                        String sdt = txt[4];
+                        hs = new HSThuong(ms, ht, t, sdt);
+                    }
+                }
+                default -> System.out.println("Loại học sinh không hợp lệ: " + txt[0]);
+            }
+            
+            if (hs != null) {
+                themHS(hs);
+            } else {
+                System.out.println("Không thể khởi tạo học sinh từ dòng: " + line);
+            }
+        }
+    } catch (Exception e) {
+    }
+}
+
 }
