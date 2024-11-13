@@ -1,0 +1,16 @@
+public class HSThuong extends HocSinh{  
+
+    public HSThuong() {
+    }
+    public HSThuong(String maSo,String hoTen,int tuoi,String soDienThoai){ 
+        super(maSo,hoTen,tuoi,soDienThoai);
+    }
+    @Override
+    public double tinhHocPhi(){
+        return 1500000;
+    }
+    @Override
+        public String toString(){
+        return super.toString()+"\t"+tinhHocPhi();
+    }
+}
