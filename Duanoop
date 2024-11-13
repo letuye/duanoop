@@ -49,32 +49,71 @@ public class Duanoop {
     }
     //Hoc sinh
     public void menuhs(){
+        System.out.println("-------------------------------------------------");
         System.out.println("Ban can gi o hoc sinh ? ");
         System.out.println("0.Quay lai ");
-        System.out.println("1.Them 1 hoc sinh ");
-        System.out.println("2.Xoa 1 hoc sinh ");
-        System.out.println("3.Xuat danh sach hoc sinh ");
-        System.out.println("4.Tim kiem hoc sinh ");   
-        System.out.println("5.Sap xep hoc sinnh ");
+        System.out.println("1.Nhap danh sach moi ");
+        System.out.println("2.Them 1 hoc sinh");
+        System.out.println("3.Xoa 1 hoc sinh");
+        System.out.println("4.Xuat danh sach hoc sinh ");
+        System.out.println("5.Tim kiem hoc sinh ");   
+        System.out.println("6.Sap xep hoc sinh ");
+        System.out.println("7.Ghi file ");
+        System.out.println("8.Doc file ");
     }   
     public void nhapluachonhs(){
-    System.out.println("Nhap lua chon cua ban :");
     int n;
+    DSHocSinh ds=new DSHocSinh(200);
     do{
+            System.out.println("--------------------------------------------------");
+                System.out.println("Nhap lua chon cua ban :");
              n=sc.nextInt();
+             sc.nextLine();
              switch(n){
                  case 0 -> System.out.println("Quay lai ");
-                 case 1 -> System.out.println("them hs ");
-                 case 2 -> System.out.println("xoa hs ");
-                 case 3 -> System.out.println("xuat ds hs");
-                 case 4 -> System.out.println("tim kiem hs ");
+                 case 1 -> {
+                     ds.nhapDSHS();
+                 }
+                 case 2 -> {
+                     HocSinh hs;
+                     char loai;
+                     System.out.println("Nhap loai hoc sinh A(hoNgheo) B(TangCuong) C(Thuong)");
+                     loai = sc.next().charAt(0);
+                     if(loai == 'A'){
+                        hs=new HSHoNgheo();
+                     }else
+                     if(loai =='B'){
+                         hs=new HSBoiDuong();
+                     }else{ 
+                          hs=new HSThuong();
+                     }        
+                     hs.nhap();
+                     ds.themHS(hs);
+                 }
+                 case 3 -> {
+                     System.out.println("Nhap ma hoc sinh can xoa ");
+                     String ma;
+                     ma=sc.nextLine();
+                     ds.xoaHS(ma);
+                 }
+                 case 4 -> {
+                     ds.xuatDSHS();
+                 }
                  case 5 -> System.out.println("sx hs ");
+                 case 6 -> System.out.println("xem diem");
+                 case 7 -> { 
+                     ds.ghiFile();
+                 }
+                 case 8 -> { 
+                     ds.docFile();
+                 }
                  default -> System.out.println("Lua chon khong hop le ");
              }
          }while(n != 0);
     }
         // Nhan vien
     public void menunv(){
+        System.out.println("--------------------------------------------------");
         System.out.println("Ban can gi o nhanvien ? ");
         System.out.println("0.Quay lai ");
         System.out.println("1.Them 1 nhan vien");
@@ -84,6 +123,7 @@ public class Duanoop {
         System.out.println("5.Sap xep nhan vien ");
     }   
     public void nhapluachonnv(){
+        System.out.println("--------------------------------------------------");
     System.out.println("Nhap lua chon cua ban :");
     int n;
     do{
@@ -101,6 +141,7 @@ public class Duanoop {
     }
     //Thoi khoa bieu
     public void menutkb(){
+        System.out.println("--------------------------------------------------");
         System.out.println("Ban can gi o thoi khoa bieu ? ");
         System.out.println("0.Quay lai ");
         System.out.println("1.Them 1 mon hoc ");
@@ -108,21 +149,23 @@ public class Duanoop {
         System.out.println("3.Xuat thoi khoa bieu ");
     }   
     public void nhapluachontkb(){
+        System.out.println("--------------------------------------------------");
     System.out.println("Nhap lua chon cua ban :");
     int n;
     do{
              n=sc.nextInt();
              switch(n){
                  case 0 -> System.out.println("Quay lai ");
-                 case 1 -> System.out.println("them mh ");
+                 case 1 -> System.out.println("them mh");
                  case 2 -> System.out.println("xoa mh ");
-                 case 3 -> System.out.println("xuat tkb");
+                 case 3 -> System.out.println("xuat mh ");
                  default -> System.out.println("Lua chon khong hop le ");
              }
          }while(n != 0);
     }
     //Lop hoc
     public void menulh(){
+        System.out.println("--------------------------------------------------");
         System.out.println("Ban can gi o Lop hoc ? ");
         System.out.println("0.Quay lai ");
         System.out.println("1.Them 1 Lop ");
@@ -131,6 +174,7 @@ public class Duanoop {
         System.out.println("4.Tim kiem lop ");   
     }   
     public void nhapluachonlh(){
+        System.out.println("--------------------------------------------------");
     System.out.println("Nhap lua chon cua ban :");
     int n;
     do{
