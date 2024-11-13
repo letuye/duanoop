@@ -100,7 +100,9 @@ public class Duanoop {
                      ds.xuatDSHS();
                  }
                  case 5 -> System.out.println("sx hs ");
-                 case 6 -> System.out.println("xem diem");
+                 case 6 -> { 
+                     ds.sapXepHP();
+                 }
                  case 7 -> { 
                      ds.ghiFile();
                  }
