@@ -1,0 +1,34 @@
+public class HSBoiDuong extends HocSinh{
+    private int soMonBoiDuong;
+
+    public HSBoiDuong() {
+    }
+
+    public HSBoiDuong(int soMonBoiDuong, String maSo, String hoTen, int tuoi, String soDienThoai) {
+        super(maSo, hoTen, tuoi, soDienThoai);
+        this.soMonBoiDuong = soMonBoiDuong;
+    }
+
+    public int getSoMonBoiDuong() {
+        return soMonBoiDuong;
+    }
+
+    public void setSoMonBoiDuong(int soMonBoiDuong) {
+        this.soMonBoiDuong = soMonBoiDuong;
+    }
+    @Override
+    public void nhap(){ 
+        super.nhap();
+        System.out.println("Nhap so mon boi duong");
+        setSoMonBoiDuong(sc.nextInt());
+    }
+        
+    @Override
+    public double tinhHocPhi(){ 
+        return 1500000 + (soMonBoiDuong*200000);
+    }
+    @Override
+        public String toString(){
+        return super.toString()+"\t"+soMonBoiDuong+"\t"+tinhHocPhi();
+    }    
+}
