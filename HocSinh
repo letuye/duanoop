@@ -3,9 +3,8 @@ package duanoop;
 
 import java.util.Scanner;
 
-public class HocSinh extends Nguoi{
+public abstract class HocSinh extends Nguoi{
     private String soDienThoai;
-    static double hocPhi=2500000;
     public HocSinh(){
         
     }
@@ -17,15 +16,9 @@ public class HocSinh extends Nguoi{
     public String getSoDienThoai() {
         return soDienThoai;
     }
-    public double getHocPhi() {
-        return hocPhi;
-    }
     public void setSoDienThoai(String soDienThoai) {
         this.soDienThoai = soDienThoai;
-    }
-    public void setHocPhi(double hocPhi) {
-        this.hocPhi = hocPhi;
-    }
+    }  
     @Override
     public void nhap(){ 
         super.nhap();
@@ -36,6 +29,8 @@ public class HocSinh extends Nguoi{
         
     @Override
     public String toString() {
-        return super.toString()+"\nso dien thoai :"+soDienThoai+"\nhoc phi :"+hocPhi; 
+        return super.toString()+"\t"+soDienThoai; 
     }
+    public abstract double tinhHocPhi();
 }
+
