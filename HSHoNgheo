@@ -1,0 +1,46 @@
+public class HSHoNgheo extends HocSinh{
+    private char ho;
+
+    public HSHoNgheo() {
+    }
+
+    public HSHoNgheo(char ho, String maSo, String hoTen, int tuoi, String soDienThoai) {
+        super(maSo, hoTen, tuoi, soDienThoai);
+        this.ho = ho;
+    }
+
+    public char getHo() {
+        return ho;
+    }
+
+    public void setHo(char ho) {
+        this.ho = ho;
+    }
+    @Override
+    public void nhap(){ 
+        super.nhap();
+        System.out.println("Nhap ho ngheo(N)hoac can ngheo(C)");
+        char h;
+        int i=0;
+        do{
+            if(i!=0){
+                System.out.println("Ky tu khong hop le vui long nhap lai");
+            }
+            h = sc.next().charAt(0);
+            setHo(h);
+            i++;
+        }while(h != 'N' && h != 'C');
+    }
+    @Override
+    public double tinhHocPhi(){
+        if(ho =='N')
+            return 750000;
+        else
+            return 1000000;
+    } 
+    @Override
+    public String toString(){
+        return super.toString()+"\t"+ho+"\t"+tinhHocPhi();
+    }
+    
+}
