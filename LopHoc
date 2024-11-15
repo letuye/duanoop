@@ -1,9 +1,30 @@
 
 package duanoop;
+import java.util.Scanner;
 public class LopHoc {
+    String maLop;
     GiaoVien gv=new GiaoVien();
     DSHocSinh dshs =new DSHocSinh(40);
     ThoiKhoaBieu tkb=new ThoiKhoaBieu();
+
+    public LopHoc(){
+    }
+
+    public LopHoc(String maLop, GiaoVien gv, DSHocSinh dshs, ThoiKhoaBieu tkb){
+        this.maLop = maLop;
+        this.gv = gv;
+        this.dshs = dshs;
+        this.tkb = tkb;
+    }
+
+    public String getmaLop(){
+        return maLop;
+    }
+
+    public void setmaLop(String maLop){
+        this.maLop = maLop;
+    }
+
     public GiaoVien getGv() {
         return gv;
     }
@@ -28,6 +49,9 @@ public class LopHoc {
     
     
     public void nhapLop(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap ma lop :");
+        maLop = sc.nextLine();
         System.out.println("Nhap giao vien chu nhiem :");
         gv.nhap();
         System.out.println("Nhap danh sach hoc sinh :");
@@ -36,6 +60,7 @@ public class LopHoc {
         tkb.nhapTKB();
     }
     public void xuatLop(){
+       System.out.println("Ma lop: "+maLop);
        System.out.println("------------------------");
        System.out.println("Giao vien chu nhiem :");
        gv.xuat();
